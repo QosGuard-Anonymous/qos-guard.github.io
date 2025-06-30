@@ -2,22 +2,29 @@
 ## 🔧 Installation
 
 ```bash
+# 1. Create a new ROS 2 workspace (if not created yet)
 mkdir -p ~/ros2_ws/src
+# 2. Move to the workspace source directory
 cd ~/ros2_ws/src
+# 3. Clone the QoS Guard repository
 git clone https://github.com/junha001027/check_qos.git
+# 4. Move back to workspace root and build the package
 cd ~/ros2_ws
 colcon build --packages-select check_qos
+# 5. Source the environment
 source install/setup.bash
 ```
 
 ## 🔧 How to Use
+
+Once installed, run the QoS constraint checker using:
 ```bash
 ros2 run check_qos check_qos_cli pub.xml sub.xml publish_period=40ms rtt=50ms
 ```
 - `pub.xml`: Writer QoS profile
 - `sub.xml`: Reader QoS profile
-- `publish_period`: Writer's message interval
-- `rtt`: Estimated round-trip time
+- `publish_period`: Writer's message interval(PP)
+- `rtt`: Estimated round-trip time(RTT)
 
 > ⚠️ Ensure XML files follow standard Fast DDS QoS profile format.
 
@@ -53,7 +60,7 @@ This tool parses QoS settings such as:
 
 - `ENTITY_FACTORY`,`PARTITION`,`USER_DATA`,`GROUP_DATA`,`TOPIC_DATA`,`RELIABILITY`,`DURABILITY`, `DEADLINE`, `LIVELINESS`, `HISTORY`, `RESOURCE_LIMITS`, `LIFESPAN`, `OWNERSHIP(+STRENGTH)`, `DESTINATION_ORDER`, `WRITER_DATA_LIFECYCLE` and `READER_DATA_LIFECYCLE`
 
-It checks both Writer and Reader profiles against 40+ rules and reports:
+It checks both Writer and Reader profiles against **40+ rules** and reports:
 
 - 🔴 **Critical** : likely to cause message loss or communication failure
 - 🟡 **Conditional** : may cause runtime issues in specific situations
@@ -64,6 +71,9 @@ It checks both Writer and Reader profiles against 40+ rules and reports:
 
 # QoS Guard Rule
 
+Based on the following rules, each profile is automatically validated.
+
+Here is a preview of some rules used in validation:
 
 | ID No. | Identifier | QoS Conflict Condition | Entity Scope | Depenency Type | Validation Stage |
 | --- | --- | --- | --- | --- | --- |
@@ -108,3 +118,6 @@ It checks both Writer and Reader profiles against 40+ rules and reports:
 | 39 | RESLIM→DURABL | [DURABL.kind ≥ TRANSIENT_LOCAL] ∧ [HIST.kind = KEEP_ALL] ∧ [RESLIM.max_samples_per_instance > ⌈RTT ⁄ PP⌉ + 2] | DataWriter | Incidental | 3 |
 | 40 | DURABL→DEADLN | [DEADLN.period > 0] ∧ [DURABL.kind ≥ TRANSIENT_LOCAL] | — | Incidental | 3 |
 | 41 | LFSPAN→DEADLN | [LFSPAN.duration < DEADLN.period] | — | Critical | — |
+
+
+---
