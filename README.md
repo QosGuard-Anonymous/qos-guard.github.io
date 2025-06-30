@@ -121,3 +121,13 @@ Here is some rules used in validation:
 
 
 ---
+
+## 🖥️ Example Output
+
+Below is an example of how the checker output looks in the terminal:
+
+![QoS Checker Output](./images/example_output.png)
+
+> 🔴 Red: Critical  🟡 Yellow: Conditional  🔵 Cyan: Incidental
+
+
