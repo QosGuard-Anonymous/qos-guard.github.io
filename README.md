@@ -125,7 +125,7 @@ Here is some rules used in validation:
 ## 🖥️ Example Output
 
 Below is an example of how the checker output looks in the terminal:
-<img src="./images/example_output.png" width="600" height="400"/>
+<img src="qos_guard_example.png" width="600" height="400"/>
 ![QoS Checker Output](qos_guard_example.png)
 
 > 🔴 Red: Critical  🟡 Yellow: Conditional  🔵 Cyan: Incidental
