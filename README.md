@@ -42,8 +42,6 @@ check_qos/
 ├── package.xml
 ├── setup.cfg
 └── setup.py
-
-
 ```
 
 ---
