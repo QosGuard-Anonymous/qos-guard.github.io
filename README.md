@@ -1,8 +1,5 @@
-# qos-guard.github.io
+# QoS Guard Rule
 
-
-
-- QoS Guard Rule
 
 | ID No. | Identifier | QoS Conflict Condition | Entity Scope | Depenency Type | Validation Stage |
 | --- | --- | --- | --- | --- | --- |
