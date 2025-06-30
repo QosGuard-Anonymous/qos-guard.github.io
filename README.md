@@ -2,8 +2,9 @@
 ## 🔧 Installation
 
 ```bash
-git clone https://github.com/your-id/check_qos.git
-cd check_qos
+cd ~/ros2_ws/src
+git clone https://github.com/junha001027/check_qos.git
+cd ~/ros2_ws
 colcon build --packages-select check_qos
 source install/setup.bash
 ```
@@ -25,12 +26,24 @@ ros2 run check_qos check_qos_cli pub.xml sub.xml publish_period=40ms rtt=50ms
 
 ```
 check_qos/
-├── qos_checker.py              # Main rule logic
-├── check_qos_cli.py            # CLI entrypoint
-├── example_profiles/
-│   ├── pub.xml
-│   └── sub.xml
-└── qos_guard_rules.md          # Full rule documentation
+├── check_qos/           
+│   ├── __pycache__
+│   ├── __init__.py
+│   └── qos_checker.py    # Main rule logic
+├── resource/           
+│   └── check_qos
+├── test/
+│   ├── test_copyright.py
+│   ├── test_flake8.py
+│   └── test_pep257.py
+├── test_xml/
+│   ├── pub.xml           # Writer QoS profile
+│   └── sub.xml           # Reader QoS profile
+├── package.xml
+├── setup.cfg
+└── setup.py
+
+
 ```
 
 ---
@@ -39,13 +52,13 @@ check_qos/
 
 This tool parses QoS settings such as:
 
-- `reliability`, `durability`, `history`, `liveliness`, `lifespan`, and `resource_limits`
+- `ENTITY_FACTORY`,`PARTITION`,`USER_DATA`,`GROUP_DATA`,`TOPIC_DATA`,`RELIABILITY`,`DURABILITY`, `DEADLINE`, `LIVELINESS`, `HISTORY`, `RESOURCE_LIMITS`, `LIFESPAN`, `OWNERSHIP(+STRENGTH)`, `DESTINATION_ORDER`, `WRITER_DATA_LIFECYCLE` and `READER_DATA_LIFECYCLE`
 
 It checks both Writer and Reader profiles against 40+ rules and reports:
 
-- 🔴 **Critical** violations: likely to cause message loss or communication failure
-- 🟡 **Conditional** warnings: may cause runtime issues in specific situations
-- 🔵 **Incidental** suggestions: recommended for better robustness
+- 🔴 **Critical** : likely to cause message loss or communication failure
+- 🟡 **Conditional** : may cause runtime issues in specific situations
+- 🔵 **Incidental** : recommended for better robustness
 
 ---
 
