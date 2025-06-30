@@ -63,8 +63,8 @@ This tool parses QoS settings such as:
 It checks both Writer and Reader profiles against **40+ rules** and reports:
 
 - 🔴 **Critical** : likely to cause message loss or communication failure
-- 🟡 **Conditional** : may cause runtime issues in specific situations
-- 🔵 **Incidental** : recommended for better robustness
+- 🟠 **Conditional** : may cause runtime issues in specific situations
+- 🟣 **Incidental** : recommended for better robustness
 
 ---
 
@@ -127,6 +127,6 @@ Here is some rules used in validation:
 Below is an example of how the checker output looks in the terminal:
 <img src="qos_guard_example.png" width="600" height="400"/>
 
-> 🔴 Red: Critical  🟡 Yellow: Conditional  🔵 Cyan: Incidental
+> 🔴 Red: Critical  🟠 Orange: Conditional  🟣 Purple: Incidental
 
 
