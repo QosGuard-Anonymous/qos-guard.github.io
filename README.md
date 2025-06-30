@@ -73,7 +73,7 @@ It checks both Writer and Reader profiles against **40+ rules** and reports:
 
 Based on the following rules, each profile is automatically validated.
 
-Here is a preview of some rules used in validation:
+Here is some rules used in validation:
 
 | ID No. | Identifier | QoS Conflict Condition | Entity Scope | Depenency Type | Validation Stage |
 | --- | --- | --- | --- | --- | --- |
