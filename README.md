@@ -2,6 +2,7 @@
 ## 🔧 Installation
 
 ```bash
+mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
 git clone https://github.com/junha001027/check_qos.git
 cd ~/ros2_ws
