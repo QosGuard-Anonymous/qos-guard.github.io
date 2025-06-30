@@ -1,3 +1,37 @@
+
+## 🔧 Installation
+
+```bash
+git clone https://github.com/your-id/check_qos.git
+cd check_qos
+colcon build --packages-select check_qos
+source install/setup.bash
+
+
+## 🔧 How to Use
+ros2 run check_qos check_qos_cli pub.xml sub.xml publish_period=40ms rtt=50ms
+
+## 📂 Project Structure
+check_qos/
+├── qos_checker.py              # Main rule logic
+├── check_qos_cli.py            # CLI entrypoint
+├── example_profiles/
+│   ├── pub.xml
+│   └── sub.xml
+└── qos_guard_rules.md          # Full rule documentation
+
+
+
+## 🧪 What It Does
+This tool parses QoS settings such as reliability, durability, history, liveliness, lifespan, and resource_limits from both Writer and Reader XML files. It applies 40+ rules to detect:
+
+🔴 Critical violations that cause DDS message loss or connection failure
+
+🟡 Conditional constraints that may lead to performance degradation
+
+🔵 Incidental suggestions for improving configuration robustness
+
+
 # QoS Guard Rule
 
 
