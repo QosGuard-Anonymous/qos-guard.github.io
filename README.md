@@ -6,12 +6,24 @@ git clone https://github.com/your-id/check_qos.git
 cd check_qos
 colcon build --packages-select check_qos
 source install/setup.bash
-
+```
 
 ## 🔧 How to Use
+```bash
 ros2 run check_qos check_qos_cli pub.xml sub.xml publish_period=40ms rtt=50ms
+```
+- `pub.xml`: Writer QoS profile
+- `sub.xml`: Reader QoS profile
+- `publish_period`: Writer's message interval
+- `rtt`: Estimated round-trip time
+
+> ⚠️ Ensure XML files follow standard Fast DDS QoS profile format.
+
+---
 
 ## 📂 Project Structure
+
+```
 check_qos/
 ├── qos_checker.py              # Main rule logic
 ├── check_qos_cli.py            # CLI entrypoint
@@ -19,17 +31,23 @@ check_qos/
 │   ├── pub.xml
 │   └── sub.xml
 └── qos_guard_rules.md          # Full rule documentation
+```
 
-
+---
 
 ## 🧪 What It Does
-This tool parses QoS settings such as reliability, durability, history, liveliness, lifespan, and resource_limits from both Writer and Reader XML files. It applies 40+ rules to detect:
 
-🔴 Critical violations that cause DDS message loss or connection failure
+This tool parses QoS settings such as:
 
-🟡 Conditional constraints that may lead to performance degradation
+- `reliability`, `durability`, `history`, `liveliness`, `lifespan`, and `resource_limits`
 
-🔵 Incidental suggestions for improving configuration robustness
+It checks both Writer and Reader profiles against 40+ rules and reports:
+
+- 🔴 **Critical** violations: likely to cause message loss or communication failure
+- 🟡 **Conditional** warnings: may cause runtime issues in specific situations
+- 🔵 **Incidental** suggestions: recommended for better robustness
+
+---
 
 
 # QoS Guard Rule
