@@ -120,7 +120,7 @@ Here is some rules used in validation:
 | 41 | LFSPAN→DEADLN | [LFSPAN.duration < DEADLN.period] | — | Critical | — |
 
 
----
+---  
 
 ## 🖥️ Example Output
 
