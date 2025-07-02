@@ -6,8 +6,8 @@
 mkdir -p ~/ros2_ws/src
 # 2. Move to the workspace source directory
 cd ~/ros2_ws/src
-# 3. Clone the QoS Guard repository
-git clone https://github.com/junha001027/check_qos_v3.git
+# 3. Clone the QoS Guard(v3) repository
+git clone --branch QosGuard_v3 https://github.com/QosGuard-Anonymous/qos-guard.github.io.git
 # 4. Move back to workspace root and build the package
 cd ~/ros2_ws
 colcon build --packages-select check_qos
